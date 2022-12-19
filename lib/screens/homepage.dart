@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_kullanimi/provider/todo_provider.dart';
+import 'package:provider_kullanimi/provider/comment_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,13 +26,11 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Consumer<CommentProvider>(
         builder: (context, value, child) {
-          // If the loading it true then it will show the circular progressbar
           if (value.isLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
-          // If loading is false then this code will show the list of todo item
           final comments = value.comments;
           return ListView.builder(
             itemCount: comments.length,
